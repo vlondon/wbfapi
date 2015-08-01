@@ -8,10 +8,17 @@
  * Controller of the testApp
  */
 angular.module('testApp')
-  .controller('MainCtrl', function () {
+  .controller('MainCtrl', function (foursquareApi) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
+
+    foursquareApi.venues.getVenue('donuts').then(function (data) {
+
+      console.log('data: ', data);
+
+    });
+
   });
