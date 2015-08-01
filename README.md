@@ -6,6 +6,8 @@ version 0.12.1.
 
 ## Building
 
+This app requires [bower](http://bower.io#install-bower), [node with npm](https://nodejs.org/), and [compass](http://compass-style.org/install/).
+
 Run `bower install` and `npm install` to install packages.
 
 ## Running project
