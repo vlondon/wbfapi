@@ -17,6 +17,9 @@
                class="form-control"
                ng-model="search.query"/>
 
+        <div class="required error-common"
+             ng-show="error">{{error.message}}</div>
+
         <button type="submit"
                 class="btn btn-search btn-warning pull-right"
                 ng-disabled="searchForm.$invalid">Search
