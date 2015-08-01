@@ -34,7 +34,7 @@
   <div ng-show="venues.length > 0">
     <ul class="venues">
       <li class="venue" ng-repeat="venue in venues">
-        <span class="title">{{venue.name}}</span>
+        <venue-item content="venue"></venue-item>
       </li>
     </ul>
   </div>
@@ -44,7 +44,7 @@
       <h5>{{group.name}}</h5>
       <ul class="items">
         <li class="item" ng-repeat="item in group.items">
-          <span class="title">{{item.venue.name}}</span>
+          <venue-item content="item.venue"></venue-item>
         </li>
       </ul>
     </div>
