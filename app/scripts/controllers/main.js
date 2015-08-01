@@ -45,6 +45,10 @@ angular.module('testApp')
             });
           } else {
             // No result
+            $scope.error = {
+              type: 1,
+              message: 'Nothing was found with you request.'
+            };
           }
         })
         .catch(function(data){
