@@ -35,7 +35,7 @@ angular.module('testApp')
           $scope.loading = false;
           console.log('SUCCEED data: ', data);
 
-          if (data.venues) {
+          if (data.venues && data.venues.length > 0) {
             console.log('Show search results: ', data.venues);
             $scope.venues = data.venues;
           } else if (data.groups && data.groups.length > 0) {
@@ -43,6 +43,8 @@ angular.module('testApp')
             data.groups.forEach(function (group) {
               console.log('Show group: ', group.name, group.items);
             });
+          } else {
+            // No result
           }
           if (!$scope.$$phase) {
             $scope.$digest();
