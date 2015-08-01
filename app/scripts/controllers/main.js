@@ -46,10 +46,6 @@ angular.module('testApp')
           } else {
             // No result
           }
-          if (!$scope.$$phase) {
-            $scope.$digest();
-          }
-
         })
         .catch(function(data){
           // Request failed: Display error message
