@@ -15,7 +15,7 @@ angular.module('testApp')
       'Karma'
     ];
 
-    foursquareApi.venues.getVenue('donuts').then(function (data) {
+    foursquareApi.venues.searchVenue('London', 'donuts').then(function (data) {
 
       console.log('data: ', data);
 

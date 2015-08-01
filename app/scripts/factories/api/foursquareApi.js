@@ -2,27 +2,39 @@
 angular.module('testApp')
   .factory('foursquareApi', function ($http, $q) {
 
-    var apiDomain = 'https://api.foursquare.com/v2';
+    var apiConfig = {
+      domain: 'https://api.foursquare.com/v2',
+      baseParams: {
+        client_id: 'L1VH4GBLNWJO5GC51EGLYXGVQQFCL1P322GNELHE5AORKLKD',
+        client_secret: 'PJAIAIK5W4YMBB5M24FNG2JJMR50NR3TASEQA13VYIPTLWMD',
+        v: 20140806,
+        m: 'foursquare'
+      }
+    };
 
     var foursquareApi = {};
 
+
     // --- VENUES ---
     foursquareApi.venues = (function () {
-      var promise;
-      var deferred = $q.defer();
+      var promise,
+        deferred = $q.defer();
 
       var venues = {};
 
-      venues.getVenue = function (searchQuery) {
-        var getParams = {
-          client_id: 'L1VH4GBLNWJO5GC51EGLYXGVQQFCL1P322GNELHE5AORKLKD',
-          client_secret: 'PJAIAIK5W4YMBB5M24FNG2JJMR50NR3TASEQA13VYIPTLWMD',
-          v: 20140806,
-          m: 'foursquare',
-          near: 'London',
-          query: searchQuery
-        };
-        promise = promise || $http.get(apiDomain + '/venues/search', {params: getParams});
+      venues.searchVenue = function (nearLocation, searchQuery) {
+
+        var getParams = apiConfig.baseParams;
+        getParams.near = nearLocation;
+
+        var searchType = 'explore';
+
+        if (searchQuery) {
+          getParams.query = searchQuery;
+          searchType = 'search';
+        }
+
+        promise = promise || $http.get(apiConfig.domain + '/venues/' + searchType, { params: getParams });
         promise
           .success(function (data) {
             if (data.response && data.response.venues) {
@@ -36,11 +48,14 @@ angular.module('testApp')
           .finally(function () {
             promise = undefined;
           });
+
         return deferred.promise;
       };
 
       return venues;
     }());
+
+
 
     return foursquareApi;
   });
