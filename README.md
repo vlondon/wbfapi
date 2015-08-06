@@ -10,7 +10,9 @@ You can run project on OS X that have [bower](http://bower.io#install-bower) and
 
 1) Install Nodejs (https://nodejs.org/)
 
-2) Install Bower(http://bower.io#install-bower): `sudo npm install -g bower`
+2) Install Bower (http://bower.io#install-bower): `sudo npm install -g bower`
+
+3) Install Grunt CLI (http://gruntjs.com/getting-started#installing-the-cli): `sudo npm install -g grunt-cli`
 
 ## Running and Testing
 
@@ -21,7 +23,7 @@ If you received an error saying "ERR! cb() never called" run `sudo npm cache cle
 
 2) Building and Running
 
-This tasks requires you to have Ruby and Sass installed. On OS X or Linux you probably already have Ruby installed; test with `ruby -v` in your terminal. When you've confirmed you have Ruby installed, run `sudo gem update —system` and `sudo gem install sass` to install Sass.
+This tasks requires you to have Ruby and Sass installed. On OS X or Linux you probably already have Ruby installed; test with `ruby -v` in your terminal. When you've confirmed you have Ruby installed, run `sudo gem update` and `sudo gem install sass` to install Sass.
 
 * Run `grunt` for building (will be built in 'dist' folder)
 * Run `grunt serve` for preview (will be opened with default browser)
