@@ -3,7 +3,7 @@
     <div class="form-search">
 
       <div class="row">
-        <div class="col-md-11">
+        <div class="col-md-10">
           <div class="form-group field-search-location">
             <div class="row">
               <div class="col-md-4">
@@ -26,9 +26,9 @@
 
           </div>
         </div>
-        <div class="col-md-1">
+        <div class="col-md-2">
           <button type="submit"
-                  class="btn btn-default btn-warning"
+                  class="btn btn-default btn-warning form-btn-search"
                   ng-disabled="searchForm.$invalid">Search
           </button>
         </div>
@@ -44,7 +44,6 @@
 </div>
 
 <div class="results">
-
   <div class="loading" ng-show="loading">Looking for venues..</div>
 
   <div ng-show="venues.length > 0">
@@ -57,7 +56,7 @@
 
   <div ng-show="groups.length > 0">
     <div class="group" ng-repeat="group in groups">
-      <h5>{{group.name}}</h5>
+      <h3>{{group.name.toUpperCase()}}</h3>
       <ul class="items">
         <li class="item" ng-repeat="item in group.items">
           <venue-item content="item.venue"></venue-item>

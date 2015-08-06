@@ -1,0 +1,146 @@
+//////////////////// GOV.UK FRONTEND TOOLKIT ////////////////////
+
+// Media query helpers. These make producing IE layouts super easy.
+
+// The base css you write should be for mobile. You can then add desktop styles on top.
+//
+// Usage:
+//
+//   div.columns {
+//     border: 1px solid;
+//
+//     @include media(desktop){
+//       width: 30%;
+//       float: left;
+//     }
+//     @include ie-lte(8) {
+//       something to fix visual bugs in old IE
+//     }
+//     @include ie(6) {
+//       padding: 0;
+//     }
+//   }
+
+
+$is-ie: false !default;
+$mobile-ie6: true !default;
+
+@-ms-viewport {
+  width: device-width;
+}
+
+@-o-viewport {
+  width: device-width;
+}
+
+@mixin media($size: false, $max-width: false, $min-width: false, $ignore-for-ie: false) {
+  @if $is-ie and ($ignore-for-ie == false) {
+    @if $size != mobile {
+      @if ($ie-version == 6 and $mobile-ie6 == false) or $ie-version > 6 {
+        @content;
+      }
+    }
+  } @else {
+    @if $size == widescreen {
+      @media (min-width: $size-widescreen){
+        @content;
+      }
+    } @else if $size == desktop {
+      @media (min-width: $size-desktop){
+        @content;
+      }
+    } @else if $size == tablet {
+      @media (min-width: $size-tablet){
+        @content;
+      }
+    } @else if $size == mobile {
+      @media (max-width: $size-mobile){
+        @content;
+      }
+    } @else if $size == gt-iphone-landscape {
+      @media (min-width: $size-iphone-landscape + 1px){
+        @content;
+      }
+    } @else if $size == gt-iphone-portrait {
+      @media (min-width: $size-iphone-portrait + 1px){
+        @content;
+      }
+    } @else if $max-width != false {
+      @media (max-width: $max-width){
+        @content;
+      }
+    } @else if $min-width != false {
+      @media (min-width: $min-width){
+        @content;
+      }
+    } @else {
+      @media (min-width: $size){
+        @content
+      }
+    }
+  }
+}
+
+
+@mixin media-height($size: false, $max-height: false, $min-height: false, $ignore-for-ie: false) {
+  @if $is-ie and ($ignore-for-ie == false) {
+    @if $size != mobile {
+      @if ($ie-version == 6 and $mobile-ie6 == false) or $ie-version > 6 {
+        @content;
+      }
+    }
+  } @else {
+    @if $size == widescreen {
+      @media (min-height: $size-widescreen){
+        @content;
+      }
+    } @else if $size == desktop {
+      @media (min-height: $size-desktop){
+        @content;
+      }
+    } @else if $size == tablet {
+      @media (min-height: $size-tablet){
+        @content;
+      }
+    } @else if $size == mobile {
+      @media (min-height: $size-mobile){
+        @content;
+      }
+    } @else if $size == gt-iphone-landscape {
+      @media (min-height: $size-iphone-landscape + 1px){
+        @content;
+      }
+    } @else if $size == gt-iphone-portrait {
+      @media (min-height: $size-iphone-portrait + 1px){
+        @content;
+      }
+    } @else if $max-height != false {
+      @media (max-width: $max-height){
+        @content;
+      }
+    } @else if $min-height != false {
+      @media (min-height: $min-height){
+        @content;
+      }
+    } @else {
+      @media (min-height: $size){
+        @content
+      }
+    }
+  }
+}
+
+@mixin ie-lte($version) {
+  @if $is-ie {
+    @if $ie-version <= $version {
+      @content;
+    }
+  }
+}
+@mixin ie($version) {
+  @if $is-ie {
+    @if $ie-version == $version {
+      @content;
+    }
+  }
+}
