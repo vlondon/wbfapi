@@ -29,3 +29,14 @@ This tasks requires you to have Ruby and Sass installed. On OS X or Linux you pr
 * `/app` -  Project source files
 * `/test` - Unit tests
 * `/dist` - Built project files (to be compiled)
+
+
+## My approach
+
+I picked AngularJS  as it's now one of the most advanced technologies for the front end. It allows us to use well known MVC and keep code structure clear separating it from html files. It has low barriers and can be used from small to big projects. It allows to write modern web apps, have good documentation and community.
+
+Yeoman choosed as it's good tool to quickly generate project base with various modules included already.
+
+Sass - one of the pre-processors that can be used in big projects. It supports variables, mixins and lets you write re-usable methods and use logic statements.
+
+Grunt - in these latter days I prefer using Gulp instead as it's using another, more readable structure. Grunt still, was developer first so it have more plugins available. 
